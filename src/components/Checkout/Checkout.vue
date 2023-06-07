@@ -50,7 +50,6 @@ export default {
         const handleDelete = (index) => {
             //to remove specific element in array
             {index != 0 ? PosStore.cart.splice(index, index) : PosStore.cart.splice(0, 1)}
-            console.log(PosStore.cart.splice(0, 0))
         }
 
         return {PosStore, handleDelete} 
