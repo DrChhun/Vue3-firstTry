@@ -4,13 +4,13 @@
             <h2 class="text-2xl font-bold">Order Details</h2>
             <hr class="my-4">
             <div class="space-y-8" v-if="PosStore.cart">
-                <div class="flex" v-for="x in PosStore.cart" :key="x">
+                <div class="flex" v-for="(x, index) in PosStore.cart" :key="index">
                     <img class="h-16 mr-8 w-16 object-cover" :src="x.image" alt="">
                     <div class="w-full">
                         <h2 class="font-semibold text-md line-clamp-2">{{x.title}}</h2>
                         <div class="flex justify-between">
                             <p class="text-slate-400 font-medium">{{x.unit}}x</p>
-                            <p class="text-blue-600 font-medium">${{x.price.toFixed(1)}}</p>
+                            <p class="text-blue-600 font-medium">${{x.price.toFixed(1)}} <span @click="handleDelete(index)" class="text-red-600 ml-4 cursor-pointer">remove</span></p>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,14 @@ import {usePostStore} from '../../stores/PosStore'
 export default {
     setup() {
         const PosStore = usePostStore()
-        return {PosStore}
+
+        const handleDelete = (index) => {
+            //to remove specific element in array
+            {index != 0 ? PosStore.cart.splice(index, index) : PosStore.cart.splice(0, 1)}
+            console.log(PosStore.cart.splice(0, 0))
+        }
+
+        return {PosStore, handleDelete} 
     }
 }
 </script>
