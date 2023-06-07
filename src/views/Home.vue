@@ -1,9 +1,14 @@
 <template>
-  <div class="home">
-    <PopupCard @bg-event="handleEvent" v-if="popup"/>
-    <SerachBar />
-    <CategoryBar />
-    <CardList @callHeroes="callHeroes" :store="matchName" />
+  <div class="flex">
+    <div class="home w-[80%]">
+      <PopupCard @bg-event="handleEvent" v-if="popup"/>
+      <SerachBar />
+      <CategoryBar />
+      <CardList @callHeroes="callHeroes" :store="matchName" />
+    </div>
+    <div class="w-[20%]">
+      <Checkout />
+    </div>
   </div>
 </template>
 
@@ -14,6 +19,7 @@ import SerachBar from '../components/Search/SearchBar.vue'
 import {usePostStore} from '../stores/PosStore'
 import CategoryBar from '@/components/Category/CategoryBar.vue'
 import PopupCard from '../components/Popup/PopupCard.vue'
+import Checkout from '@/components/Checkout/Checkout.vue'
 
 export default {
   name: 'HomeView',
@@ -21,7 +27,8 @@ export default {
     CardList,
     SerachBar,
     CategoryBar,
-    PopupCard
+    PopupCard,
+    Checkout
   },
   setup() {
     const store = ref([])
