@@ -1,0 +1,4 @@
+//pop up on items to adjust the items for checkout [x]
+//category filter [x]
+//checkout item to calculate price and discount
+//mobile responsive
